@@ -49,6 +49,8 @@ When a user creates a task, all other registered users will receive a notificati
 5. Access the website:
    Open your browser and visit: http://localhost:3000
 
+---
+
 ## Monitor system
 
 Visit this [link](https://github.com/multeders/use_case_study/blob/main/monitor/README.md)
