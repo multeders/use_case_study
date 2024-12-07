@@ -47,3 +47,13 @@ When a user creates a task, all other registered users will receive a notificati
 4. Access the website:
    Open your browser and visit: http://localhost:3000
 
+## Monitor system
+
+Visit this [link](https://github.com/multeders/use_case_study/blob/main/monitor/README.md)
+
+---
+
+## Notes
+
+Both **frontend** and **Grafana** are running on port `3000`. Please ensure that there are no port conflicts.
+
