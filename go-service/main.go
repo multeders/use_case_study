@@ -19,7 +19,7 @@ type Notification struct {
 }
 
 func main() {
-	conn, err := amqp.Dial(os.Getenv("RABBITMQ_URL"))//"amqp://guest:guest@rabbitmq:5672"
+	conn, err := amqp.Dial(os.Getenv("RABBITMQ_URL"))
 	if err != nil {
 		log.Fatalf("Failed to connect to RabbitMQ: %v", err)
 	}
@@ -53,15 +53,15 @@ func main() {
 				log.Printf("Failed to parse message: %v", err)
 				continue
 			}
-			
-			if(os.Getenv("ENV") == "development"){
+
+			if os.Getenv("ENV") == "development" {
 				log.Printf("Mail should be sent to: %s", notification.Email)
 				log.Printf("Text message should be sent to: %s", notification.Phone)
 			} else {
 				sendEmail(notification.Email, notification.Message)
 				sendSMS(notification.Phone, notification.Message)
 			}
-			
+
 		}
 	}()
 
