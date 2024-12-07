@@ -40,11 +40,13 @@ When a user creates a task, all other registered users will receive a notificati
    git clone https://github.com/multeders/use_case_study.git
 2. Create .env files in the backend and go-service folders based on the provided .env.example files:
     Simply remove .example from the file name.
-3. Build and run the project using Docker Compose:
+3. Build the project using Docker Compose:
    ```bash
    docker-compose -f docker-compose.development.yml build
+4. Run the project using Docker Compose:
+   ```bash
    docker-compose -f docker-compose.development.yml up -d
-4. Access the website:
+5. Access the website:
    Open your browser and visit: http://localhost:3000
 
 ## Monitor system
