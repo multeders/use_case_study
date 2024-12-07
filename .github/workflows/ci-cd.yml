@@ -1,0 +1,69 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+
+jobs:
+  unit_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: |
+          cd back-end
+          npm install
+
+      - name: Run Unit Tests
+        run: |
+          cd back-end
+          npm run test
+
+  build_and_push:
+    runs-on: ubuntu-latest
+    needs: [unit_tests]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build, tag, and push backend Docker image to ECR
+      run: |
+        echo "Build and push backend Docker image to ECR"
+    
+    - name: Build, tag, and push worker Docker image to ECR
+      run: |
+        echo "Build and push go-service Docker image to ECR"
+    
+    - name: Build, tag, and push frontend Docker image to ECR
+      run: |
+        echo "Build and push frontend Docker image to ECR"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build_and_push]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Transfer docker-compose.yml to EC2 instance
+      run: |
+        echo "Transver docker-compose.yml to EC2 instance"
+
+    - name: Transfer .env file to EC2 instance
+      run: |
+        echo "Transfer .env file to EC2 instance"
+
+    - name: Deploy to EC2 via Docker Compose
+      run: |
+        echo "Restarting services with Docker Compose..."

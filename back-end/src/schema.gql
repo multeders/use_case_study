@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Task {
+  id: Float!
+  title: String!
+  description: String
+  status: String!
+  user: User
+}
+
+type User {
+  id: Float!
+  username: String!
+  email: String!
+  phone: String
+  password: String!
+  tasks: [Task!]!
+}
+
+type Query {
+  user(email: String!): User!
+  tasks: [Task!]!
+}
+
+type Mutation {
+  login(email: String!, password: String!): String!
+  register(username: String!, email: String!, password: String!, phone: String): User!
+  createTask(title: String!, description: String!, status: String!): Task!
+  editTask(id: Int!, title: String, description: String, status: String): Task!
+  deleteTask(id: Int!): Boolean!
+}
