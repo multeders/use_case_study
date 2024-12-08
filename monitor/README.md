@@ -22,7 +22,7 @@ This guide provides detailed instructions on setting up and accessing the monito
 
 ## Access the Services
 
-**Grafana**: Open [http://localhost:3000](http://localhost:3000) in your browser. Log in with:
+**Grafana**: Open [http://localhost:3001](http://localhost:3001) in your browser. Log in with:
 - **Username**: `admin`
 - **Password**: `admin` (or the one you set in the environment variables).
 
