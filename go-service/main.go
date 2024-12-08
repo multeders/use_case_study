@@ -70,7 +70,7 @@ func main() {
 }
 
 func sendEmail(to, message string) {
-	if os.Getenv("SENDGRID_API_KEY") == "" {
+	if os.Getenv("SENDGRID_API_KEY") != "" {
 		from := mail.NewEmail("Notification Service", "no-reply@example.com")
 		toEmail := mail.NewEmail("User", to)
 		subject := "New Notification"
@@ -90,7 +90,7 @@ func sendEmail(to, message string) {
 }
 
 func sendSMS(to, message string) {
-	if os.Getenv("SENDGRID_API_KEY") == "" {
+	if os.Getenv("SENDGRID_API_KEY") != "" {
 		client := twilio.NewRestClient()
 		params := &openapi.CreateMessageParams{}
 		params.SetTo(to)
