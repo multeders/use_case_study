@@ -14,6 +14,12 @@ export default function RegisterPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const phoneRegex = /^[+]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/;
+    if(!phoneRegex.test(phone)){
+      alert('Phone number is not valid');
+      return;
+    }
+    
     try {
       await register({ variables: { username, email, phone, password } });
       alert('Registration successful! Please login.');
